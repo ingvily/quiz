@@ -2,11 +2,11 @@
 
     var sock = new SockJS('/echo');
 
-    sock.onopen = createSend({ type: "connect" });
+    sock.onopen = createSend({ type: "connect", name: "ape" });
     sock.onclose = function() { location.reload() };
 
     function answer(alternative) {
-        return createSend({ type: 'answer', alternative: alternative });
+        return createSend({ type: 'answer', alternative: alternative, name: "ape" });
     }
 
     function createSend(data) {

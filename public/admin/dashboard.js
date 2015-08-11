@@ -58,7 +58,7 @@
         }
 
         if (data.type === 'answer') {
-            mentometer.answer(data.user, data.alternative);
+            mentometer.answer(data.user, data.alternative, data.name);
         }
     };
 

@@ -4,6 +4,7 @@
         var chart,
             currentQuestion,
             answers = {},
+            names = [],
             allowAnswers = true;
 
         var answersEl = document.querySelector('.answers'),
@@ -11,7 +12,9 @@
             questionEl = document.querySelector('.question .question-text'),
             nextQuestionEl = document.querySelector('.next-question'),
             nextQuestionLinkEl = document.querySelector('.next-question a'),
-            alternativesEl = document.querySelector('.alternatives');
+            alternativesEl = document.querySelector('.alternatives'),
+            nameEl = document.querySelector('.names');
+
 
         function show(num, question) {
             nextQuestionEl.style['display'] = 'none';
@@ -66,7 +69,7 @@
             done: function() {
                 document.querySelector('body').setAttribute('class', 'done');
             },
-            answer: function(user, alternative) {
+            answer: function(user, alternative, name) {
                 if (!allowAnswers) return;
 
                 for (var key in answers) {
@@ -74,6 +77,10 @@
                 }
 
                 answers[alternative].push(user);
+                names.push(name);
+                nameEl.innerHTML = name;
+                //upgrade users score if right answer
+
 
                 chart.update(answers);
             }

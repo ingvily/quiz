@@ -7,8 +7,8 @@ var connections = function() {
     var items = [];
 
     return {
-        add: function(id, conn) {
-            items.push({ id: id, conn: conn });
+        add: function(id, conn, name) {
+            items.push({ id: id, conn: conn, name: name });
         },
         remove: function(id) {
             items = _.reject(items, function(item) {
@@ -36,9 +36,9 @@ echo.on('connection', function(conn) {
 
         if (data.type === 'connect') {
             if (data.isAdmin === true) {
-                admins.add(conn.id, conn);
+                admins.add(conn.id, conn, "admin");
             } else {
-                users.add(conn.id, conn);
+                users.add(conn.id, conn, data.name);
             }
 
             admins.broadcast({
@@ -49,7 +49,8 @@ echo.on('connection', function(conn) {
             admins.broadcast({
                 type: 'answer',
                 user: conn.id,
-                alternative: data.alternative
+                alternative: data.alternative,
+                name: data.name
             });
         }
     });
