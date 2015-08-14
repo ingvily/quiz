@@ -1,4 +1,4 @@
-;(function() {
+(function() {
 
     var sock = new SockJS('/echo');
 
@@ -6,6 +6,8 @@
     sock.onclose = function() { location.reload() };
 
     function answer(alternative) {
+        var type = window.location.hash.substr(1);
+        console.log(type);
         return createSend({ type: 'answer', alternative: alternative, name: "ape" });
     }
 
