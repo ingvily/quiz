@@ -4,7 +4,6 @@
         var chart,
             currentQuestion,
             answers = {},
-            names = [],
             allowAnswers = true;
 
         var answersEl = document.querySelector('.answers'),
@@ -12,8 +11,7 @@
             questionEl = document.querySelector('.question .question-text'),
             nextQuestionEl = document.querySelector('.next-question'),
             nextQuestionLinkEl = document.querySelector('.next-question a'),
-            alternativesEl = document.querySelector('.alternatives'),
-            nameEl = document.querySelector('.names');
+            alternativesEl = document.querySelector('.alternatives');
 
 
         function show(num, question) {
@@ -77,8 +75,16 @@
                 }
 
                 answers[alternative].push(user);
-                names.push(name);
-                nameEl.innerHTML = name;
+
+                var teams = createMentomet();
+
+                teams.updateAnswer(name, alternative);
+                teams.showAnswers();
+
+
+
+
+
                 //upgrade users score if right answer
 
 

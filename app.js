@@ -22,6 +22,9 @@ var connections = function() {
             items.forEach(function(item) {
                 item.conn.write(JSON.stringify(data));
             });
+        },
+        items: function ()  {
+            return items;
         }
     }
 };
@@ -44,6 +47,7 @@ echo.on('connection', function(conn) {
             admins.broadcast({
                 numberOfUsers: users.size()
             });
+
         }
         if (data.type === 'answer') {
             admins.broadcast({
