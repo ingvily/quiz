@@ -6,7 +6,8 @@
             "alternatives": [
                 "Ja",
                 "Nei"
-            ]
+            ],
+            "rightanswer": "a"
         },
         {
             "question": "Hvilken bokstav er før den tredje i&nbsp;alfabetet?",
@@ -14,7 +15,9 @@
                 "C",
                 "A",
                 "B"
-            ]
+            ],
+            "rightanswer": "c"
+
         },
         {
             "question": "Hva er fremtidens&nbsp;plattform?",
@@ -22,11 +25,13 @@
                 "JVM",
                 "CLR",
                 "JS"
-            ]
+            ],
+            "rightanswer": "b"
         }
     ];
 
-    var mentometer = createMentometer(questions);
+    var teams = createTeams();
+    var mentometer = createMentometer(questions, teams);
 
     dispatch.on("/", function() {
         mentometer.startPage();

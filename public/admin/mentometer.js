@@ -1,6 +1,6 @@
 (function() {
 
-    window.createMentometer = function(questions) {
+    window.createMentometer = function(questions, teams) {
         var chart,
             currentQuestion,
             answers = {},
@@ -51,6 +51,8 @@
 
             utils.runTimer(20000, keepRunning(num), updateTimerDisplay).then(function() {
                 allowAnswers = false;
+                teams.updateScores(question.rightanswer);
+                teams.showScore(question.rightanswer);
                 nextQuestionEl.removeAttribute('style');
             });
         }
@@ -76,7 +78,6 @@
 
                 answers[alternative].push(user);
 
-                var teams = createMentomet();
 
                 teams.updateAnswer(name, alternative);
                 teams.showAnswers();
