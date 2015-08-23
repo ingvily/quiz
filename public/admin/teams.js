@@ -8,7 +8,8 @@
             answerlist = document.getElementById('answerslist'),
             answertitle = document.getElementById('answertitle'),
             scorelist = document.getElementById('scorelist'),
-            rightanswer = document.getElementById('rightanswer');
+            rightanswer = document.getElementById('rightanswer'),
+            scoretitle = document.getElementById('scoretitle');
 
 
         function updateScores(rightAnswer) {
@@ -26,6 +27,7 @@
         function showScore(rightAnswer) {
             clearAnswerList();
             rightanswer.innerHTML = '<span> Riktig svar:     </span><span>' + rightAnswer + '</span>';
+            scoretitle.innerHTML = 'Scorelist';
             clearScoreList();
             createScoreList();
         }
@@ -40,6 +42,11 @@
             });
         }
 
+        function removeScore() {
+            rightanswer.innerHTML = '';
+            scoretitle.innerHTML = '';
+            clearScoreList();
+        }
 
         function clearScoreList () {
             var child;
@@ -82,6 +89,7 @@
         return {
             showAnswers: showAnswers,
             showScore: showScore,
+            removeScore: removeScore,
             updateAnswer: updateAnswer,
             updateScores:updateScores
         }
