@@ -1,5 +1,22 @@
 (function() {
 
+    var sock = new SockJS('/echo');
+
+    sock.onopen = createSend({ type: "fil"});
+
+
+    sock.onopen = function() {
+        sock.send(JSON.stringify({ type: "fil", isAdmin: true }));
+    };
+
+
+    function createSend(data) {
+        return function() {
+            sock.send(JSON.stringify(data));
+        }
+    }
+
+
     window.createTeams = function() {
         var teams = ['/ape', '/kake'], score = {'/ape': 0, '/kake': 0}, answers = {'/ape': '', '/kake': ''};
 
@@ -11,8 +28,12 @@
             rightanswer = document.getElementById('rightanswer'),
             scoretitle = document.getElementById('scoretitle');
 
+        function writeScoreToFile () {
+            createSend({ type: 'skrivfil'});
+        }
 
         function updateScores(rightAnswer) {
+            writeScoreToFile();
             teams.forEach(function (name) {
                 if(answers[name] === rightAnswer) {
                     updateScore(name, 1)
