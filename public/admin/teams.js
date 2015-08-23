@@ -6,6 +6,7 @@
         var nameEl = document.querySelector('.names'),
             karEl = document.querySelector('.karakter'),
             answerlist = document.getElementById('answerslist'),
+            answertitle = document.getElementById('answertitle'),
             scorelist = document.getElementById('scorelist'),
             rightanswer = document.getElementById('rightanswer');
 
@@ -23,7 +24,8 @@
         }
 
         function showScore(rightAnswer) {
-            rightanswer.innerHTML = rightAnswer;
+            clearAnswerList();
+            rightanswer.innerHTML = '<span> Riktig svar:     </span><span>' + rightAnswer + '</span>';
             clearScoreList();
             createScoreList();
         }
@@ -52,6 +54,7 @@
         }
 
         function showAnswers() {
+            answertitle.innerHTML = 'Answers';
             clearAnswerList();
             createAnswerList();
         }
@@ -67,6 +70,7 @@
         }
 
         function clearAnswerList () {
+            answertitle.innerHTML = '';
             var child;
             while(answerlist.hasChildNodes()){
                 child = answerlist.firstElementChild;

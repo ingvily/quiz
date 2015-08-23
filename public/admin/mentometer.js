@@ -11,7 +11,8 @@
             questionEl = document.querySelector('.question .question-text'),
             nextQuestionEl = document.querySelector('.next-question'),
             nextQuestionLinkEl = document.querySelector('.next-question a'),
-            alternativesEl = document.querySelector('.alternatives');
+            alternativesEl = document.querySelector('.alternatives'),
+            scoretitle = document.getElementById('scoretitle');
 
 
         function show(num, question) {
@@ -49,10 +50,18 @@
                 };
             };
 
-            utils.runTimer(20000, keepRunning(num), updateTimerDisplay).then(function() {
-                allowAnswers = false;
+            function showRightAnswerAndScore() {
+                alternativesEl.innerHTML = '';
+                answersEl.innerHTML = '';
+
                 teams.updateScores(question.rightanswer);
                 teams.showScore(question.rightanswer);
+                scoretitle.innerHTML = 'Scorelist';
+            }
+
+            utils.runTimer(20000, keepRunning(num), updateTimerDisplay).then(function() {
+                showRightAnswerAndScore();
+                allowAnswers = false;
                 nextQuestionEl.removeAttribute('style');
             });
         }
