@@ -41,7 +41,7 @@
 
             function showRightAnswerAndScore() {
                 alternativesEl.innerHTML = '';
-                
+
                 teams.updateScores(question.rightanswer);
                 teams.showScore(question.rightanswer);
                 //scoretitle.innerHTML = 'Scorelist';

@@ -1,7 +1,8 @@
 (function() {
 
     window.createTeams = function() {
-        var teams = ['/ape', '/kake'], score = {'/ape': 0, '/kake': 0}, answers = {'/ape': '', '/kake': ''};
+        var teams = ['/ape', '/kake'], score = {'/ape': 0, '/kake': 0}, answers = {'/ape': '', '/kake': ''},
+            names = {'/ape': 'Ape', '/kake': 'Kake'};
 
         var nameEl = document.querySelector('.names'),
             karEl = document.querySelector('.karakter'),
@@ -61,18 +62,20 @@
         }
 
         function showAnswers() {
-            answertitle.innerHTML = 'Answers';
             clearAnswerList();
+            answertitle.innerHTML = 'Lag som har besvart';
             createAnswerList();
         }
 
         function createAnswerList () {
             var listrow, text;
             teams.forEach(function (name) {
-                listrow = document.createElement('li');
-                text=document.createTextNode(name + ' ' + answers[name]);
-                listrow.appendChild(text);
-                answerlist.appendChild(listrow);
+                if(answers[name] != ''){
+                    listrow = document.createElement('li');
+                    text=document.createTextNode(names[name] + ' ' + answers[name]);
+                    listrow.appendChild(text);
+                    answerlist.appendChild(listrow);
+                }
             });
         }
 
