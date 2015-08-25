@@ -90,7 +90,7 @@
             teams.forEach(function (name) {
                 if(answers[name] != ''){
                     listrow = document.createElement('li');
-                    text=document.createTextNode(names[name] + ' ' + answers[name]);
+                    text=document.createTextNode(names[name]);
                     listrow.appendChild(text);
                     answerlist.appendChild(listrow);
                 }

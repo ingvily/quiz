@@ -10,7 +10,7 @@
             "rightanswer": "a"
         },
         {
-            "question": "Uttrykket “sjakk matt stammer fra persisk, og betyr ...”?",
+            "question": "Uttrykket “sjakk matt“ stammer fra persisk, og betyr ...?",
             "alternatives": [
                 "Kongen er beseiret",
                 "Kongen er død",
