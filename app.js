@@ -70,11 +70,7 @@ var app = express();
 
 app.get('/admin/questions.js', function(req, res) {
     var questions = [];
-    try {
-        questions = require('./questions');
-    } catch(e) {
-        console.log(e);
-    }
+
 
     res.set('Content-Type', 'application/javascript');
     res.send('window.questions = ' + JSON.stringify(questions) + ';');
