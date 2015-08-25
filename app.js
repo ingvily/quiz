@@ -86,4 +86,4 @@ app.use(express.static('public'));
 
 var server = http.createServer(app);
 echo.installHandlers(server, { prefix: '/echo' });
-server.listen(9999, '0.0.0.0');
+server.listen(process.env.PORT || 3000, '0.0.0.0');
