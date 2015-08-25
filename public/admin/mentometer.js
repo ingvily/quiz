@@ -47,7 +47,7 @@
                 //scoretitle.innerHTML = 'Scorelist';
             }
 
-            utils.runTimer(2000, keepRunning(num), updateTimerDisplay).then(function() {
+            utils.runTimer(30000, keepRunning(num), updateTimerDisplay).then(function() {
                 showRightAnswerAndScore();
                 allowAnswers = false;
                 nextQuestionEl.removeAttribute('style');
