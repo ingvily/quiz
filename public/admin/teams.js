@@ -1,8 +1,26 @@
 (function() {
 
     window.createTeams = function() {
-        var teams = ['/ape', '/kake'], score = {'/ape': 0, '/kake': 0}, answers = {'/ape': '', '/kake': ''},
-            names = {'/ape': 'Ape', '/kake': 'Kake'};
+        var teams = ['/monkey', '/zebra', '/rhino', '/lion', '/tiger', '/hippo', '/panda', '/tapir', '/koala', '/camel', '/bear', '/wolf', '/zimba'],
+            score = createEmptyList(0),
+            answers = createEmptyList(''),
+            names = createNameList();
+
+        function createEmptyList(emptyElement) {
+            var list = {};
+            teams.forEach(function (name){
+                list[name] = emptyElement;
+            });
+            return list;
+        }
+
+        function createNameList() {
+            var list = {};
+            teams.forEach(function (name){
+                list[name] = name.substr(1);
+            });
+            return list;
+        }
 
         var nameEl = document.querySelector('.names'),
             karEl = document.querySelector('.karakter'),
@@ -37,7 +55,7 @@
             var listrow, text;
             teams.forEach(function (name) {
                 listrow = document.createElement('li');
-                text=document.createTextNode(name + ' ' + score[name]);
+                text=document.createTextNode(names[name] + ' ' + score[name]);
                 listrow.appendChild(text);
                 scorelist.appendChild(listrow);
             });
